@@ -1,5 +1,6 @@
 package org.aguzman.java.jdbc;
 
+import org.aguzman.java.jdbc.modelo.Categoria;
 import org.aguzman.java.jdbc.modelo.Producto;
 import org.aguzman.java.jdbc.repositorio.ProductoRepositorioImpl;
 import org.aguzman.java.jdbc.repositorio.Repositorio;
@@ -14,17 +15,22 @@ public class EjemploJdbcUpdate {
 
             Repositorio<Producto> repositorio = new ProductoRepositorioImpl();
 
-            System.out.println("============= listar =============");
+/*            System.out.println("============= listar =============");
             repositorio.listar().forEach(System.out::println);
 
             System.out.println("============= obtener por id =============");
-            System.out.println(repositorio.porId(3L));
+            System.out.println(repositorio.porId(3L));*/
 
             System.out.println("============= editar producto =============");
             Producto producto = new Producto();
             producto.setId(3L);
             producto.setNombre("Teclado Razer mecánico");
             producto.setPrecio(700);
+            //le asignamos una categoria
+            Categoria categoria = new Categoria();
+            categoria.setId(2L);
+            producto.setCategoria(categoria);
+            // ********** fin asignacion categoria ******
             repositorio.guardar(producto);
             System.out.println("Producto editado con éxito");
             repositorio.listar().forEach(System.out::println);

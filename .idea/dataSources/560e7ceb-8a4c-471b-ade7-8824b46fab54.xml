@@ -1242,34 +1242,71 @@
     <user id="335" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="336" parent="326" name="productos">
+    <table id="336" parent="326" name="categorias">
       <Engine>InnoDB</Engine>
       <CollationName>latin1_swedish_ci</CollationName>
     </table>
-    <column id="337" parent="336" name="id">
+    <table id="337" parent="326" name="productos">
+      <Engine>InnoDB</Engine>
+      <CollationName>latin1_swedish_ci</CollationName>
+    </table>
+    <column id="338" parent="336" name="nombre">
+      <DataType>varchar(45)|0s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="339" parent="336" name="id">
+      <AutoIncrement>4</AutoIncrement>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <index id="340" parent="336" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="341" parent="336" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="342" parent="337" name="id">
       <AutoIncrement>3</AutoIncrement>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="338" parent="336" name="nombre">
+    <column id="343" parent="337" name="nombre">
       <DataType>varchar(209)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="339" parent="336" name="precio">
+    <column id="344" parent="337" name="precio">
       <DataType>int(11)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="340" parent="336" name="fecha_registro">
+    <column id="345" parent="337" name="fecha_registro">
       <DataType>datetime|0s</DataType>
       <Position>4</Position>
     </column>
-    <index id="341" parent="336" name="PRIMARY">
+    <column id="346" parent="337" name="categoria_id">
+      <DataType>int(11)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="347" parent="337" name="productos_categorias">
+      <ColNames>categoria_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>categorias</RefTableName>
+    </foreign-key>
+    <index id="348" parent="337" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="342" parent="336" name="PRIMARY">
+    <index id="349" parent="337" name="productos_categorias">
+      <ColNames>categoria_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="350" parent="337" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
